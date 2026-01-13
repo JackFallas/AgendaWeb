@@ -1,0 +1,13 @@
+.div-padre {
+    display: flex;
+    border: 1px solid black;
+    gap: 5px;
+    padding: 5px;
+}
+
+.div-hijo1,
+.div-hijo2 {
+    border: 1px solid red;
+    height: 50px;
+    width: 50px;
+}
