@@ -1,4 +1,6 @@
 import { ItemContacto } from "../../common/itemContacto/itemContacto.js";
+import { ContactList } from "./db.js";
+
 
 let Contactos = () => {
     let sectionContactos = document.createElement("section");
@@ -8,9 +10,13 @@ let Contactos = () => {
     h2.textContent = "Contactos"
     sectionContactos.appendChild(h2);
 
+    ContactList.forEach((contact) => {
+        sectionContactos.appendChild(ItemContacto("user",
+            contact.nombre, contact.telefono));
+    });
+
     sectionContactos.appendChild(ItemContacto("user", "Jossue Fuentes", "12345678"));    
-    return sectionContactos;
-}
+    return sectionContactos;}
 
 export {Contactos};
 

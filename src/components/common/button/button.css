@@ -1,60 +1,71 @@
-/* Selecciona los contenedores de los botones */
+/* Contenedor principal del botón */
 #nav > div {
     display: flex;
     align-items: center;
-    
-    /* Ocupa todo el ancho */
-    width: 100%; 
-    /* Ajustamos el padding para darle altura y que parezca más cuadrado/robusto */
-    padding: 25px 20px; 
-    
-    margin-bottom: 12px;
+    width: 100%;
+    /* Aumentamos el padding para dar ese aspecto de "bloque" con aire */
+    padding: 12px 16px; 
+    margin-bottom: 4px; /* Menos margen entre botones para un look de lista */
     box-sizing: border-box;
     
-    /* Fondo degradado */
-    background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+    /* Fondo transparente por defecto (Minimalismo) */
+    background: transparent;
     
-    /* Borde circular (esquinas) */
-    border-radius: 12px; 
+    /* Bordes sutiles: superior e inferior como pediste */
+    border-top: 1px solid #f1f5f9; 
+    border-bottom: 1px solid #f1f5f9;
     
-    /* --- NUEVOS BORDES SUPERIOR E INFERIOR --- */
-    border-top: 4px solid #0056b3;    /* Azul más oscuro para contraste */
-    border-bottom: 4px solid #0056b3; /* Azul más oscuro para contraste */
+    /* Bordes laterales redondeados para mantener la forma circular */
+    border-radius: 8px; 
     
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
 }
 
-/* Efecto al pasar el mouse (Hover) */
+/* Efecto Hover: sutil, estilo Tailwind */
 #nav > div:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3);
-    filter: brightness(1.1);
-    /* Opcional: El borde puede resaltar en hover */
-    border-top-color: #ffffff;
-    border-bottom-color: #ffffff;
+    background-color: #f8fafc; /* Un gris muy tenue */
+    border-top-color: #e2e8f0;
+    border-bottom-color: #e2e8f0;
+    transform: translateX(4px); /* Desplazamiento lateral suave en lugar de elevación */
 }
 
-/* Estilo para el contenedor de la imagen */
+/* Icono: ahora sin filtro blanco para que se vea el color original o gris */
 .button-image {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
-    margin-right: 15px;
-    filter: brightness(0) invert(1); 
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    opacity: 0.7; /* Color más suave para el icono */
 }
 
-/* Estilo para el botón de texto */
+.button-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Texto del botón: tipografía moderna y limpia */
 .button-text {
     flex-grow: 1;
     background: transparent;
     border: none;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
+    padding: 0;
+    
+    /* Color gris oscuro profesional (Slate 700) */
+    color: #334155; 
+    font-size: 14px;
+    font-weight: 500;
     text-align: left;
+    
     cursor: pointer;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* El botón seleccionado (Active) */
+#nav > div:active {
+    background-color: #f1f5f9;
+    transform: scale(0.98);
 }
