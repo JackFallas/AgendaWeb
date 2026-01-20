@@ -10,7 +10,7 @@ let viewContacs = function (){
     container.appendChild(Contactos());
 }
 
-let viewNewContacs = function (){
+let viewNewContacts = function (){
     let container = document.getElementById("container");
     container.innerHTML = "";
     container.appendChild(NewContactForm());
@@ -28,4 +28,4 @@ let viewNewToDoList = function (){
     container.appendChild(NewTaskForm());
 }
 
-export {viewContacs, viewNewContacs, viewToDoList, viewNewToDoList}
+export {viewContacs, viewNewContacts, viewToDoList, viewNewToDoList}
