@@ -1,6 +1,7 @@
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/sections/contactos/Contactos.js";
 import { NewContactForm } from "./components/sections/newContactForm/NewContactForm.js";
+import { ToDoList } from "./components/sections/toDoList/ToDoList.js";
 
 // Mostrar menu principal
 
@@ -74,6 +75,7 @@ function App(){
         "list",
         function () {
             container.innerHTML = "";
+            container.appendChild(ToDoList())
         }
     ));
 
