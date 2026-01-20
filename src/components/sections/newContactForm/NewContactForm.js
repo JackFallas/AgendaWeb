@@ -1,4 +1,6 @@
-import { ContactList } from "../contactos/db.js";
+import { Button } from "../../common/button/Button.js";
+import { viewContacs } from "../../layout/nav/NavControlers.js";
+import { ContactList } from "../db/db.js";
 function NewContactForm() {
     let form = document.createElement("form");
     form.className = "new-contact-form";
@@ -33,13 +35,24 @@ function NewContactForm() {
     inputTelefono.placeholder = "ej: 12345678";
 
     // Botones
-    let btnSubmit = document.createElement("button");
-    btnSubmit.type = "submit";
-    btnSubmit.textContent = "Guardar";
+    let btnSubmit = (Button(
+        "Guardar",
+        "submit",
+        "",
+        function (){
+            form.requestSubmit();
+        }
+    ));
 
-    let btnCancel = document.createElement("button");
-    btnCancel.type = "button";
-    btnCancel.textContent = "cancelar";
+    let btnCancel = (Button(
+        "Cancelar",
+        "cancel",
+        "",
+        function (){
+            viewContacs();
+        }
+    ));
+
 
     form.appendChild(labelNombre);
     form.appendChild(inputNombre);

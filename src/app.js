@@ -1,6 +1,7 @@
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/sections/contactos/Contactos.js";
 import { NewContactForm } from "./components/sections/newContactForm/NewContactForm.js";
+import { NewTaskForm } from "./components/sections/newTaskForm/NewTaskForm.js";
 import { ToDoList } from "./components/sections/toDoList/ToDoList.js";
 
 // Mostrar menu principal
@@ -60,9 +61,9 @@ function App(){
     ));
 
     nav.appendChild(Button(
-        "agregar", 
-        "Agreagar", 
-        "add",
+        "Agregar Contacto", 
+        "agregarContacto", 
+        "add_box",
         function () {
             container.innerHTML = "";
             container.appendChild(NewContactForm());
@@ -75,7 +76,17 @@ function App(){
         "list",
         function () {
             container.innerHTML = "";
-            container.appendChild(ToDoList())
+            container.appendChild(ToDoList());
+        }
+    ));
+
+    nav.appendChild(Button(
+        "Agregar Tarea", 
+        "agregarTarea", 
+        "add_box",
+        function () {
+            container.innerHTML = "";
+            container.appendChild(NewTaskForm());
         }
     ));
 
@@ -83,5 +94,6 @@ function App(){
 }
 
 export {App};
+
 // container.appendChild(NewContactForm());
 

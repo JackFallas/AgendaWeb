@@ -1,6 +1,6 @@
-let ItemToDoList = (imgCheck, titulo, prioridad, fecha) => {
+let ItemTask = (imgCheck, titulo, prioridad, fecha) => {
     let div = document.createElement("div");
-    div.classname = "item-ToDoList";
+    div.className = "item-task";
 
     let etiquetaImg = document.createElement("img");
     etiquetaImg.src = `./src/assets/icons/${imgCheck}.svg`;
@@ -22,4 +22,4 @@ let ItemToDoList = (imgCheck, titulo, prioridad, fecha) => {
     return div;
 }
 
-export {ItemToDoList};
+export {ItemTask};

@@ -1,0 +1,28 @@
+section.toDoList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Contenedor del Título + Botón Agregar */
+.toDoList-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.toDoList-header h2 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #111827;
+}
+
+/* Ajuste para que el botón de agregar no se vea gigante */
+.toDoList-header .button-container {
+    width: auto;
+    padding: 0;
+}

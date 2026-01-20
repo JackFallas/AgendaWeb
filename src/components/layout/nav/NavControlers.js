@@ -1,16 +1,31 @@
-import { NewContactForm } from "../../sections/newContactForm/NewContactForm";
-import { contactos } from "../../sections/contactos/contactos.js";
+import { NewContactForm } from "../../sections/newContactForm/NewContactForm.js";
+import { Contactos } from "../../sections/contactos/Contactos.js";
+import { ToDoList } from "../../sections/toDoList/ToDoList.js";
+import { NewTaskForm } from "../../sections/newTaskForm/NewTaskForm.js";
 
-let container = document.getElementById("container");
 
 let viewContacs = function (){
-    container.innerHtml = "";
-    container.appendChild((contactos));
+    let container = document.getElementById("container");
+    container.innerHTML = "";
+    container.appendChild(Contactos());
 }
 
 let viewNewContacs = function (){
-    container.innerHtml = "";
+    let container = document.getElementById("container");
+    container.innerHTML = "";
     container.appendChild(NewContactForm());
 }
 
-export {viewContacs, viewNewContacs}
+let viewToDoList = function (){
+    let container = document.getElementById("container");
+    container.innerHTML = "";
+    container.appendChild(ToDoList());
+}
+
+let viewNewToDoList = function (){
+    let container = document.getElementById("container");
+    container.innerHTML = "";
+    container.appendChild(NewTaskForm());
+}
+
+export {viewContacs, viewNewContacs, viewToDoList, viewNewToDoList}

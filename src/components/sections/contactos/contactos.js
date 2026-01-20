@@ -1,5 +1,5 @@
 import { ItemContacto } from "../../common/itemContacto/ItemContacto.js";
-import { ContactList } from "./db.js";
+import { ContactList } from "../db/db.js";
 
 
 let Contactos = () => {
