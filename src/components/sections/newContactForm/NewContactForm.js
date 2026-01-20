@@ -1,6 +1,6 @@
 import { Button } from "../../common/button/Button.js";
+import { getContactsFromStorage, saveContactsToStorage } from "../../common/storage/storage.js";
 import { viewContacs } from "../../layout/nav/NavControlers.js";
-import { ContactList } from "../db/db.js";
 function NewContactForm() {
     let form = document.createElement("form");
     form.className = "new-contact-form";
@@ -70,11 +70,14 @@ function NewContactForm() {
         telefono: inputTelefono.value
         };
 
-        console.log(contacto);
-        ContactList.push(contacto);
+        const contactoActual = getContactsFromStorage();
+        contactoActual.push(contacto)
+        saveContactsToStorage(contactoActual);
 
         //Limpiar formulario
         form.reset();
+
+        viewContacs();
         
         /*
         Otra forma de limpiar
