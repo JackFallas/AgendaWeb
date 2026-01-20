@@ -1,4 +1,4 @@
-import { ItemContacto } from "../../common/itemContacto/itemContacto.js";
+import { ItemContacto } from "../../common/itemContacto/ItemContacto.js";
 import { ContactList } from "./db.js";
 
 

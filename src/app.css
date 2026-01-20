@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-#app {
+#root.vista-app {
     width: 100vw;
     height: 100vh;
 
@@ -13,12 +13,12 @@
     gap: 10px;
 }
 
-#nav {
+.vista-app #nav {
     height: 100vh;
     border: 1px solid #000;
 }
 
-#container {
+.vista-app #container {
     height: 100vh;
     border: 1px solid #000;
 }

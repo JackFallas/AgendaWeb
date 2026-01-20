@@ -1,20 +1,37 @@
-let login = function () {
-
+import { Button } from "../../common/button/Button.js";
+let Login = function (validado) {
+    
     let login = document.createElement("section");
     
+    // Creacion de input de usuario
     let h3 = document.createElement("h3");
-    h3.innerHTTML = "Login";
+    h3.innerHTML = "Login";
 
     let user = document.createElement("input");
     user.type = "text";
     user.placeholder = "Usuario";
 
+    // Creacion de input de password
     let password = document.createElement("input");
     password.type = "password";
     password.placeholder = "Password";
 
-    let button = document.createElement("button");
-    button.innerHTTML = "Iniciar sesion";
+    // Agregar boton global (titulo, id, img, callback)
+    let button = (Button(
+        "Iniciar Sesion",
+        "login",
+        "",
+        function (){
+            if (user.value === "admin"){
+                console.log("Usuario correcto")
+                console.log("Realizando callback")
+                validado();
+            } else{
+                console.log("Usuario incorrecto");
+            }
+
+        }
+    ))
 
     login.appendChild(h3);
     login.appendChild(user);
@@ -24,4 +41,4 @@ let login = function () {
     return login;
 }
 
-export {login};
+export {Login};
