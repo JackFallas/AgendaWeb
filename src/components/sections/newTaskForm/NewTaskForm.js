@@ -1,6 +1,6 @@
 import { Button } from "../../common/button/Button.js";
+import { getTasksFromStorage, saveTasksToStorage } from "../../common/storage/storage.js";
 import { viewToDoList } from "../../layout/nav/NavControlers.js";
-import { TaskList } from "../db/db.js";
 
 function NewTaskForm(){
     let form = document.createElement("form");
@@ -96,15 +96,18 @@ function NewTaskForm(){
         fecha: inputFecha.value
         };
 
-        console.log(task);
-        TaskList.push(task);
+        const tareaActual = getTasksFromStorage();
+        tareaActual.push(task);
+        saveTasksToStorage(tareaActual)
 
         //Limpiar formulario
         form.reset();
+
+        viewToDoList();
     });
 
     return form;
-
+    
 }
 
 export {NewTaskForm};

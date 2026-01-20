@@ -1,7 +1,7 @@
 import { ItemTask } from "../../common/itemTask/ItemTask.js";
-import { TaskList } from "../db/db.js";
 import { Button } from "../../common/button/Button.js";
 import { viewNewToDoList } from "../../layout/nav/NavControlers.js";
+import { getTasksFromStorage } from "../../common/storage/storage.js";
 
 let ToDoList = () => {
     let sectionToDoList = document.createElement("section");
@@ -28,8 +28,9 @@ let ToDoList = () => {
     headerContainer.appendChild(btnAdd);
     sectionToDoList.appendChild(headerContainer);
 
-    
-    TaskList.forEach((task) => {
+    const tareasActuales = getTasksFromStorage();
+
+    tareasActuales.forEach((task) => {
         sectionToDoList.appendChild(ItemTask(
             "check_box",
             task.titulo,
