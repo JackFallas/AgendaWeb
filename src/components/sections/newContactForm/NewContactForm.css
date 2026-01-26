@@ -1,80 +1,125 @@
-/* 1. EL CONTENEDOR DEL FORMULARIO */
+/* 1. Contenedor principal para centrar la tarjeta en la pantalla */
 .new-contact-form {
     display: flex;
-    flex-direction: column;
-    width: 100%; /* Ocupa todo el espacio horizontal disponible */
-    max-width: 500px; /* Evita que se estire demasiado en pantallas grandes */
-    padding: 24px;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    gap: 16px; /* Espacio uniforme entre elementos */
+    justify-content: center;
+    padding: 40px 20px;
 }
 
-.new-contact-form h2 {
-    margin: 0 0 8px 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    color: #111827;
-    font-weight: 700;
-}
-
-/* 2. LABELS Y INPUTS */
-.new-contact-form label {
-    font-size: 14px;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: -8px; /* Acerca el label al input */
-}
-
-.new-contact-form input {
+/* 2. El cuadro central (Tarjeta estilo premium) */
+.form-card {
+    background: #ffffff;
     width: 100%;
+    max-width: 750px; /* Ancho ideal para 2 columnas */
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.form-card h2 {
+    color: #2D97ED;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+/* 3. El Grid interno (Organizacion) */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Crea las 2 columnas */
+    gap: 25px; /* Espacio entre columnas y filas */
+    margin-bottom: 30px;
+}
+
+/* 4. Estilo del divContainer (form-field) */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espacio entre el label y su input */
+}
+
+.form-field label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #2D97ED;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-field input {
     padding: 12px 16px;
-    box-sizing: border-box;
-    border: 1px solid #d1d5db; /* Gris suave */
-    border-radius: 8px; /* Bordes circulares sutiles */
-    font-size: 15px;
-    transition: all 0.2s ease;
+    border-radius: 12px;
+    border: 2px solid #f1f5f9;
+    background: #f8fafc;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.form-field input:focus {
     outline: none;
+    border-color: #2D97ED;
+    background: #ffffff;
 }
 
-/* Efecto de foco para el input */
-.new-contact-form input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+/* Contenedor de botones centrados */
+.form-botones-centrados {
+    display: flex;
+    justify-content: center; /* Los centra en la tarjeta */
+    gap: 40px; /* Distancia entre iconos */
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f1f5f9;
 }
 
-/* 3. BOTONES */
-.new-contact-form button {
-    width: 100%; /* Botones de ancho completo */
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
+/* Reset del estilo de 'lista' para los botones del formulario */
+.form-botones-centrados .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px !important; /* Cuadro pequeño para el icono */
+    height: 60px !important;
+    padding: 0 !important; /* Quitamos el padding del nav */
+    border: none !important; /* Quitamos las lineas del nav */
+    background: #f8fafc; /* Fondo suave circular */
+    border-radius: 50% !important; /* Forma circular */
+    transition: all 0.3s ease;
 }
 
-/* Botón Guardar (Submit) */
-.new-contact-form button[type="submit"] {
-    background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
-    color: white;
-    margin-top: 8px;
-    border-top: 2px solid rgba(255, 255, 255, 0.2); /* Borde superior sutil */
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);    /* Borde inferior sutil */
+/* Ajuste de la imagen del icono */
+.form-botones-centrados .button-image {
+    margin-right: 0 !important; /* Quitamos el margen lateral del nav */
+    width: 30px;
+    height: 30px;
+    opacity: 1;
 }
 
-.new-contact-form button[type="submit"]:hover {
-    filter: brightness(1.05);
-    transform: translateY(-1px);
+/* Ocultar el boton de texto que genera tu funcion global */
+.form-botones-centrados .button-text {
+    display: none !important;
 }
 
-/* Botón Cancelar */
-.new-contact-form button[type="button"] {
-    background-color: #f3f4f6; /* Gris muy claro */
-    color: #4b5563;
+/* Efectos visuales solo para estos botones */
+.form-botones-centrados .button-container:hover {
+    transform: translateY(-5px) !important; /* Brinco hacia arriba */
+    background-color: #2D97ED !important; /* Se vuelve azul */
+    box-shadow: 0 8px 15px rgba(45, 151, 237, 0.2);
 }
 
-.new-contact-form button[type="button"]:hover {
-    background-color: #e5e7eb;
+/* Cambio de color del icono a blanco al pasar el mouse */
+.form-botones-centrados .button-container:hover .button-image img {
+    filter: brightness(0) invert(1);
+}
+
+/* Color rojo para el de cancelar al hacer hover */
+.form-botones-centrados #btn-cancelar-contacto:hover {
+    background-color: #ef4444 !important; /* Rojo */
+    box-shadow: 0 8px 15px rgba(239, 68, 68, 0.2);
+}
+
+/* 5. Responsive: En pantallas pequeñas, todo a 1 columna */
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 }

@@ -1,61 +1,60 @@
-/* 1. Contenedor principal para centrar la tarjeta */
-.edit-contact-form {
+.detalle-contacto-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 20px;
-    width: 100%;
+    padding-top: 40px;
 }
 
-/* 2. Tarjeta de Edición */
-.form-card {
+.detalle-card {
     background: #ffffff;
     width: 100%;
-    max-width: 750px;
+    max-width: 700px;
     padding: 40px;
-    border-radius: 24px;
+    border-radius: 30px;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
 }
 
-.form-card h2 {
+.detalle-card h2 {
     color: #2D97ED;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.8rem;
     font-weight: 800;
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: -1px;
 }
 
-/* 3. Grid de 2 columnas */
-.form-grid {
+/* Distribución de la información */
+.info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    margin-bottom: 30px;
+    grid-template-columns: 1fr 1fr; /* 2 columnas de datos */
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-.form-field {
+.info-item {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 10px;
 }
 
-.form-field label {
-    font-size: 0.7rem;
+.info-item .label {
+    font-size: 0.75rem;
     font-weight: 800;
     color: #2D97ED;
     text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
-.form-field input {
-    padding: 12px 16px;
-    border-radius: 12px;
-    border: 2px solid #f1f5f9;
-    background: #f8fafc;
-    font-size: 1rem;
+.info-item .value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
 }
 
-/* 4. BOTONES (Tu diseño circular de iconos) */
+/* --- BOTONES  --- */
 .form-botones-centrados {
     display: flex;
     justify-content: center;
@@ -79,38 +78,31 @@
     transition: all 0.3s ease;
 }
 
-.form-botones-centrados .button-text {
-    display: none !important;
-}
-
 .form-botones-centrados .button-image {
     margin-right: 0 !important;
     width: 30px;
     height: 30px;
+    opacity: 1;
 }
 
-/* Efectos Hover por ID (Copia exacta de tu estilo de Nuevo Contacto) */
+.form-botones-centrados .button-text {
+    display: none !important;
+}
+
+/* EFECTO HOVER GLOBAL (Azul por defecto) */
 .form-botones-centrados .button-container:hover {
     transform: translateY(-5px) !important;
-}
-
-/* El de Guardar (submit) en azul o verde */
-#submit:hover {
     background-color: #2D97ED !important;
     box-shadow: 0 8px 15px rgba(45, 151, 237, 0.2);
 }
 
-/* El de Cancelar (cancel) en rojo */
-#cancel:hover {
+/* CAMBIO A ROJO SOLO PARA EL BOTÓN DE ELIMINAR */
+#btn-delete:hover {
     background-color: #ef4444 !important;
-    box-shadow: 0 8px 15px rgba(239, 68, 68, 0.2);
+    box-shadow: 0 8px 15px rgba(239, 68, 68, 0.2) !important;
 }
 
+/* Icono blanco al hacer hover en cualquiera */
 .form-botones-centrados .button-container:hover .button-image img {
     filter: brightness(0) invert(1);
 }
-
-/* Responsive */
-@media (max-width: 600px) {
-    .form-grid { grid-template-columns: 1fr; }
-}   

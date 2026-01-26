@@ -1,24 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 #root.vista-app {
-    width: 100vw;
-    height: 100vh;
-
     display: grid;
-    grid-template-columns: 300px 1fr;
-    
-    gap: 10px;
+    grid-template-columns: 280px 1fr; /* Sidebar fija en PC */
+    height: 100vh;
 }
 
-.vista-app #nav {
-    height: 100vh;
-    border: 1px solid #000;
+/* --- NAV PC --- */
+#nav {
+    background-color: #fcfdfe;
+    border-right: 1px solid #edf2f7;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.vista-app #container {
-    height: 100vh;
-    border: 1px solid #000;
+#nav button {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #4a5568;
+    transition: all 0.3s ease;
+}
+
+#nav button:hover {
+    border-color: #2D97ED;
+    color: #2D97ED;
+    transform: translateX(5px);
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+#container {
+    overflow-y: auto;
+    padding: 60px 40px;
+    background-color: #f8fafc;
+}
+
+/* RESPONSIVE: NAV MÓVIL ESTILO TAB-BAR */
+@media (max-width: 800px) {
+    #root.vista-app {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    #nav {
+        flex-direction: row !important;
+        height: 70px;
+        overflow-x: auto; /* Scroll horizontal si hay muchos botones */
+        overflow-y: hidden;
+        padding: 10px;
+        background: #ffffff;
+        border-bottom: 2px solid #eee;
+        gap: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        /* Escondemos el scrollbar para que se vea más limpio */
+        scrollbar-width: none; 
+    }
+
+    #nav::-webkit-scrollbar { display: none; }
+
+    #nav button {
+        flex: 0 0 auto; /* Evita que los botones se encojan */
+        padding: 8px 15px;
+        font-size: 12px;
+        white-space: nowrap;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
 }

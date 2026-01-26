@@ -1,84 +1,26 @@
-/* 1. EL CONTENEDOR PRINCIPAL (section) */
-section.contactos {
-    width: 100%;             /* Ocupa todo el ancho horizontal */
-    display: flex;
-    flex-direction: column;
-    padding: 0;              /* Quitamos padding lateral para que llegue a los bordes */
-    margin: 0;
-    box-sizing: border-box;
-    background-color: transparent;
+.contactos {
+    width: 100%;
+    padding: 20px;
 }
 
-/* El título de la sección */
-section.contactos h2 {
-    padding: 20px 20px 10px 20px; /* Solo damos espacio al texto, no al contenedor */
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    color: #111827;
+.contactos h2 {
+    text-align: center;
+    color: #2D97ED;
+    margin-bottom: 60px; /* Espacio bajo el título */
+    font-size: 2rem;
 }
 
-/* 2. EL ITEM INDIVIDUAL (Lo que retorna ItemContacto) */
-/* Si tu componente ItemContacto retorna un div, asegúrate de que use esta clase */
-.item-contacto, 
-section.contactos > div { 
-    width: 100%;             /* IMPORTANTE: Fuerza el ancho total */
-    display: flex;
-    align-items: center;
-    padding: 16px 20px;      /* Espaciado interno elegante */
-    box-sizing: border-box;
-    
-    background-color: #ffffff;
-    
-    /* Bordes sutiles superior e inferior */
-    border-top: 1px solid #f1f5f9;
-    border-bottom: 1px solid #f1f5f9;
-    
-    /* Bordes circulares sutiles en las esquinas */
-    border-radius: 0px;      /* En listas de ancho completo, suele verse mejor sin radius lateral */
-    
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+/* Este es el que ahora sí funcionará */
+.contactos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    column-gap: 30px; /* Espacio horizontal */
+    row-gap: 100px;   /* DISTANCIA VERTICAL QUE BUSCABAS */
 }
 
-/* Efecto Hover */
-.item-contacto:hover,
-section.contactos > div:hover {
-    background-color: #f8fafc;
-    border-color: #e2e8f0;
-}
-
-/* 3. ICONO CUADRADO CON BORDES REDONDEADOS */
-.item-contacto img, 
-.button-image {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;     /* El "cuadrado circular" que pediste */
-    margin-right: 16px;
-    flex-shrink: 0;          /* Evita que el icono se aplaste */
-}
-
-/* 4. ALINEACIÓN DE TEXTOS */
-.item-contacto .info,
-section.contactos > div > .info {
-    flex-grow: 1;            /* Toma todo el espacio restante */
-    display: flex;
-    justify-content: space-between; /* Nombre a la izquierda, Teléfono a la derecha */
-    align-items: center;
-}
-
-.nombre-contacto {
-    font-weight: 600;
-    color: #1f2937;
-    font-size: 15px;
-}
-
-.telefono-contacto {
-    color: #6b7280;
-    font-size: 14px;
-    font-family: 'JetBrains Mono', monospace;
+/* Responsive para el grid */
+@media (max-width: 600px) {
+    .contactos-grid {
+        row-gap: 60px; 
+    }
 }

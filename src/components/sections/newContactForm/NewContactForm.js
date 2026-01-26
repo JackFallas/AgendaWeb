@@ -1,73 +1,130 @@
 import { Button } from "../../common/button/Button.js";
-import { getContactsFromStorage, saveContactsToStorage } from "../../common/storage/storage.js";
+import { getContactsFromStorage, saveContactsToStorage } from "../../common/storage/Storage.js";
 import { viewContacs } from "../../layout/nav/NavControlers.js";
+
 function NewContactForm() {
     let form = document.createElement("form");
     form.className = "new-contact-form";
 
-    //Titutlo
+    // Contenedor para el cuestionario (la tarjeta)
+    let card = document.createElement("div");
+    card.className = "form-card"; 
+    form.appendChild(card);
+
+    // Titulo
     let title = document.createElement("h2");
     title.textContent = "Nuevo Contacto";
-    form.appendChild(title);
+    card.appendChild(title);
 
-    // Campo nombre
-    let labelNombre = document.createElement("label");
-    labelNombre.textContent = "Nombre";
-    labelNombre.htmlFor = "nombre";
+    // Contenedor para la informacion
+    let grid = document.createElement("div");
+    grid.className = "form-grid"; 
+    card.appendChild(grid);
 
-    let inputNombre = document.createElement("input");
-    inputNombre.type = "text";
-    inputNombre.id = "nombre";
-    inputNombre.name = "nombre";
-    inputNombre.required = true;
-    inputNombre.placeholder = "Ingresa el nombre";
+    // Funcion para no repetir codigo (para crear un espacio de label e input)
+    const crearCampo = (labelTexto, idInput, placeholder, tipo = "text") => {
+        let divContainer = document.createElement("div");
+        divContainer.className = "form-field";
 
-    // Campo telefono
-    let labelTelefono = document.createElement("label");
-    labelTelefono.textContent = "Telefono";
-    labelTelefono.htmlFor = "telefono"
+        let label = document.createElement("label");
+        label.textContent = labelTexto;
 
-    let inputTelefono = document.createElement("input");
-    inputTelefono.type = "tel";
-    inputTelefono.id = "telefono";
-    inputTelefono.name = "telefono";
-    inputTelefono.required = true;
-    inputTelefono.placeholder = "ej: 12345678";
+        let input = document.createElement("input");
+        input.type = tipo;
+        input.id = idInput;
+        input.placeholder = placeholder;
+        input.required = true;
+
+        divContainer.appendChild(label);
+        divContainer.appendChild(input);
+
+        grid.appendChild(divContainer);
+        return input;
+    };
+
+    // Campo Alias
+    let inputAlias = crearCampo(
+        "Alias",
+        "alias",
+        "Ej: Luis"
+    );
+
+    // Campo Telefono 1
+    let inputNum1 = crearCampo (
+        "Primer Numero",
+        "num 1",
+        "Ej: 12345678",
+        "tel"
+    );
+
+    // Campo Telefono 2
+    let inputNum2 = crearCampo (
+        "Segundo Numero",
+        "num 1",
+        "Ej: 12345678",
+        "tel"
+    );
+
+    // Campo Nombre
+    let inputNombre = crearCampo(
+        "Nombre Completo", 
+        "nombre", 
+        "Nombre y Apellido"
+    );
+
+    //Campo Ubicacion
+    let inputUbicacion = crearCampo(
+        "Ubicacion", 
+        "ubicacion", 
+        "Ciudad o Direccion"
+    );
+
+    //Campo Tipo Familiar
+    let inputTipo = crearCampo(
+        "Tipo Familiar", 
+        "tipo", 
+        "Ej: Amigo, Trabajo, Familia"
+    );
 
     // Botones
     let btnSubmit = (Button(
-        "Guardar",
-        "submit",
         "",
+        "submit",
+        "save",
         function (){
             form.requestSubmit();
         }
     ));
 
     let btnCancel = (Button(
-        "Cancelar",
-        "cancel",
         "",
+        "cancel",
+        "cancel",
         function (){
             viewContacs();
         }
     ));
 
+    // Creamos el div de los botones para mejor control
+    let divBotones = document.createElement("div");
+    divBotones.className = "form-botones-centrados";
 
-    form.appendChild(labelNombre);
-    form.appendChild(inputNombre);
-    form.appendChild(labelTelefono);
-    form.appendChild(inputTelefono);
-    form.appendChild(btnSubmit);
-    form.appendChild(btnCancel);
+    divBotones.appendChild(btnCancel);
+    divBotones.appendChild(btnSubmit);
+
+    card.appendChild(divBotones);
 
     // Porgramacion del formulario
 
     form.addEventListener("submit", (e) =>{
         e.preventDefault();
         let contacto = {
-        nombre: inputNombre.value,
-        telefono: inputTelefono.value
+            alias: inputAlias.value,
+            primerNumero: inputNum1.value,
+            segundoNumero: inputNum2.value,
+            nombreCompleto: inputNombre.value,
+            ubicacion: inputUbicacion.value,
+            tipoFamiliar: inputTipo.value
         };
 
         const contactoActual = getContactsFromStorage();
@@ -84,7 +141,6 @@ function NewContactForm() {
         inputNombre.value = "";
         inputTelefono.value = "";
         */
-        
     });
     
     return form;

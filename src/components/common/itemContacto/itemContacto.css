@@ -1,13 +1,63 @@
 .item-contacto {
-    font-family: monospace;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    width: 100%; /* Se adapta al 50% del grid */
+}
+
+.item-contacto:hover {
+    transform: translateY(-8px);
+    border-color: #2D97ED;
+    box-shadow: 0 20px 25px -5px rgba(45, 151, 237, 0.1);
+}
+
+.item-contacto img {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f9ff;
+    border-radius: 15px;
+    padding: 12px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.info-contacto {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.nombre {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 2px;
+}
+
+.nombre::before {
+    content: "ALIAS";
+    font-size: 10px;
+    color: #2D97ED;
+    font-weight: 800;
+    display: block;
+}
+
+.telefono {
     font-size: 1rem;
+    color: #718096;
+    font-weight: 500;
+}
 
-    border: 1px solid #ccc;
-    border-radius: 5px;
-
-    width: 100px;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
-    padding: 0.5rem;
+.telefono::before {
+    content: "NÚMERO";
+    font-size: 10px;
+    color: #a0aec0;
+    font-weight: 700;
+    display: block;
+    margin-top: 5px;
 }

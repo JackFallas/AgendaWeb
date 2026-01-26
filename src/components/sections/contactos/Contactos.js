@@ -1,7 +1,6 @@
 import { ItemContacto } from "../../common/itemContacto/ItemContacto.js";
 import { getContactsFromStorage } from "../../common/storage/Storage.js";
-import { EditContactForm } from "../editContactForm/EditContactForm.js";
-import { Button } from "../../common/button/Button.js";
+import { DetalleContacto } from "../detalleContacto/DetalleContacto.js";
 
 let Contactos = () => {
     let sectionContactos = document.createElement("section");
@@ -17,35 +16,27 @@ let Contactos = () => {
         h2.textContent = "Mis Contactos"
         sectionContactos.appendChild(h2);
 
+        // Creamos la separacion de contactos
+        let grid = document.createElement("div");
+        grid.className = "contactos-grid";
+        sectionContactos.appendChild(grid);
+
         const contactosActuales = getContactsFromStorage();
 
         contactosActuales.forEach((contact, index) => {
             let item = ItemContacto(
                 "user",
-                contact.nombre, 
-                contact.telefono
+                contact.alias, 
+                contact.primerNumero
             );
             
-            // Contenedor de la acciones para botones
-            let actionsContainer = document.createElement("div");
-            actionsContainer.className = "item-actions";
+            item.addEventListener("click", () => {
+                const container = document.getElementById("container");
+                container.innerHTML = "";
+                container.appendChild(DetalleContacto(contact, index));
+            });
 
-            // Boton de editar
-            let btnEdit = Button(
-                "Editar",
-                "edit",
-                "edit",
-                function (){
-                    const container = document.getElementById("container");
-                    container.innerHTML = "";
-                    EditContactForm(contact, index);
-                }
-            );
-
-            actionsContainer.appendChild(btnEdit);
-
-            item.appendChild(actionsContainer);
-            sectionContactos.appendChild(item);
+            grid.appendChild(item);
         });
     };
 
