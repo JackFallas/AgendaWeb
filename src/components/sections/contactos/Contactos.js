@@ -1,7 +1,7 @@
 import { ItemContacto } from "../../common/itemContacto/ItemContacto.js";
-import { getContactsFromStorage } from "../../common/storage/storage.js";
+import { getContactsFromStorage } from "../../common/storage/Storage.js";
 import { EditContactForm } from "../editContactForm/EditContactForm.js";
-
+import { Button } from "../../common/button/Button.js";
 
 let Contactos = () => {
     let sectionContactos = document.createElement("section");
@@ -20,36 +20,42 @@ let Contactos = () => {
         const contactosActuales = getContactsFromStorage();
 
         contactosActuales.forEach((contact, index) => {
-            sectionContactos.appendChild(ItemContacto(
+            let item = ItemContacto(
                 "user",
                 contact.nombre, 
-                contact.telefono));
+                contact.telefono
+            );
             
             // Contenedor de la acciones para botones
             let actionsContainer = document.createElement("div");
             actionsContainer.className = "item-actions";
 
             // Boton de editar
-            let btnEdit = (Button(
+            let btnEdit = Button(
                 "Editar",
                 "edit",
                 "edit",
                 function (){
+                    const container = document.getElementById("container");
+                    container.innerHTML = "";
                     EditContactForm(contact, index);
                 }
-            ));
+            );
 
             actionsContainer.appendChild(btnEdit);
 
+            item.appendChild(actionsContainer);
+            sectionContactos.appendChild(item);
         });
-
-        return sectionContactos;
     };
+
+    render();
+
+    return sectionContactos;
 };
     /* 
     Agregar un usuario desde aqui en codigo
     sectionContactos.appendChild(ItemContacto("user", "Jossue Fuentes", "12345678"));    
-
     */
 
 export {Contactos};

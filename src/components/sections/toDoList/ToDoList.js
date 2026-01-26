@@ -1,7 +1,7 @@
 import { ItemTask } from "../../common/itemTask/ItemTask.js";
 import { Button } from "../../common/button/Button.js";
 import { viewNewToDoList } from "../../layout/nav/NavControlers.js";
-import { getTasksFromStorage } from "../../common/storage/storage.js";
+import { getTasksFromStorage } from "../../common/storage/Storage.js";
 
 let ToDoList = () => {
     let sectionToDoList = document.createElement("section");
