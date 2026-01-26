@@ -1,5 +1,5 @@
 import { Button } from "../../common/button/Button.js";
-import { getTasksFromStorage, saveTasksToStorage } from "../../common/storage/storage.js";
+import { getTasksFromStorage, saveTasksToStorage } from "../../common/storage/Storage.js";
 import { viewToDoList } from "../../layout/nav/NavControlers.js";
 
 function NewTaskForm(){
