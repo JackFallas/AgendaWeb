@@ -1,19 +1,22 @@
-/* 1. Contenedor principal para centrar la tarjeta en la pantalla */
+/* 1. Contenedor principal centrado */
 .new-contact-form {
     display: flex;
     justify-content: center;
     padding: 40px 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* 2. El cuadro central (Tarjeta estilo premium) */
+/* 2. Tarjeta estilo premium */
 .form-card {
     background: #ffffff;
     width: 100%;
-    max-width: 750px; /* Ancho ideal para 2 columnas */
+    max-width: 750px;
     padding: 40px;
     border-radius: 24px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
 }
 
 .form-card h2 {
@@ -21,21 +24,21 @@
     text-align: center;
     margin-bottom: 30px;
     font-size: 1.8rem;
+    font-weight: 800;
 }
 
-/* 3. El Grid interno (Organizacion) */
+/* 3. Grid de 2 columnas responsivo */
 .form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Crea las 2 columnas */
-    gap: 25px; /* Espacio entre columnas y filas */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
     margin-bottom: 30px;
 }
 
-/* 4. Estilo del divContainer (form-field) */
 .form-field {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Espacio entre el label y su input */
+    gap: 8px;
 }
 
 .form-field label {
@@ -46,80 +49,87 @@
     letter-spacing: 0.5px;
 }
 
-.form-field input {
-    padding: 12px 16px;
+.form-field input, .form-field select {
+    padding: 14px 16px;
     border-radius: 12px;
     border: 2px solid #f1f5f9;
     background: #f8fafc;
     font-size: 1rem;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-field input:focus {
     outline: none;
     border-color: #2D97ED;
     background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(45, 151, 237, 0.1);
 }
 
-/* Contenedor de botones centrados */
+/* 4. Botones circulares corregidos */
 .form-botones-centrados {
     display: flex;
-    justify-content: center; /* Los centra en la tarjeta */
-    gap: 40px; /* Distancia entre iconos */
+    justify-content: center;
+    gap: 40px;
     margin-top: 30px;
     padding-top: 20px;
     border-top: 1px solid #f1f5f9;
 }
 
-/* Reset del estilo de 'lista' para los botones del formulario */
 .form-botones-centrados .button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 60px !important; /* Cuadro pequeño para el icono */
-    height: 60px !important;
-    padding: 0 !important; /* Quitamos el padding del nav */
-    border: none !important; /* Quitamos las lineas del nav */
-    background: #f8fafc; /* Fondo suave circular */
-    border-radius: 50% !important; /* Forma circular */
-    transition: all 0.3s ease;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 65px !important;
+    height: 65px !important;
+    padding: 0 !important;
+    border: none !important;
+    background: #f8fafc !important;
+    border-radius: 50% !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 
-/* Ajuste de la imagen del icono */
-.form-botones-centrados .button-image {
-    margin-right: 0 !important; /* Quitamos el margen lateral del nav */
-    width: 30px;
-    height: 30px;
-    opacity: 1;
-}
-
-/* Ocultar el boton de texto que genera tu funcion global */
 .form-botones-centrados .button-text {
     display: none !important;
 }
 
-/* Efectos visuales solo para estos botones */
+.form-botones-centrados .button-image {
+    margin: 0 !important;
+    width: 30px !important;
+    height: 30px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Hovers especificos */
 .form-botones-centrados .button-container:hover {
-    transform: translateY(-5px) !important; /* Brinco hacia arriba */
-    background-color: #2D97ED !important; /* Se vuelve azul */
-    box-shadow: 0 8px 15px rgba(45, 151, 237, 0.2);
+    transform: translateY(-8px) !important;
 }
 
-/* Cambio de color del icono a blanco al pasar el mouse */
+#btn-guardar-contacto:hover {
+    background-color: #2D97ED !important;
+    box-shadow: 0 8px 20px rgba(45, 151, 237, 0.3);
+}
+
+#btn-cancelar-contacto:hover {
+    background-color: #ef4444 !important;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+
 .form-botones-centrados .button-container:hover .button-image img {
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1) !important;
 }
 
-/* Color rojo para el de cancelar al hacer hover */
-.form-botones-centrados #btn-cancelar-contacto:hover {
-    background-color: #ef4444 !important; /* Rojo */
-    box-shadow: 0 8px 15px rgba(239, 68, 68, 0.2);
+/* 5. Responsive total */
+@media (max-width: 768px) {
+    .form-card { padding: 30px 20px; }
 }
 
-/* 5. Responsive: En pantallas pequeñas, todo a 1 columna */
 @media (max-width: 600px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-botones-centrados { gap: 20px; }
+    .form-card h2 { font-size: 1.5rem; }
 }

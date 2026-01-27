@@ -1,59 +1,164 @@
+/* --- CONTENEDOR PRINCIPAL DE LA TAREA --- */
 .item-task {
-    width: 100%;
     display: flex;
     align-items: center;
-    padding: 16px 20px;
+    padding: 20px 30px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    width: 100%;
     box-sizing: border-box;
-    background-color: #ffffff;
-    border-bottom: 1px solid #f1f5f9;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
 .item-task:hover {
-    background-color: #f8fafc;
+    transform: translateY(-5px);
+    border-color: #2D97ED;
 }
 
-/* Icono del checkbox */
-.item-task img {
-    width: 32px; /* Un poco más pequeño que el de contactos */
-    height: 32px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    margin-right: 16px;
+/* --- ICONO CHECK IZQUIERDO --- */
+.task-img-container {
+    width: 55px;
+    height: 55px;
+    background-color: #f0f7ff;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 25px;
+}
+
+.task-check {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+/* --- BLOQUE DE INFORMACIÓN --- */
+.info-tarea {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-start; /* Empuja el contenido a la izquierda */
+    gap: 50px; /* Espacio uniforme entre Tarea, Prioridad y Fecha */
+}
+
+/* Estilo uniforme para etiquetas superiores (TAREA, PRIORIDAD, LÍMITE) */
+.titulo-tarea::before { content: "TAREA"; color: #2D97ED; font-size: 13px; }
+.prioridad-tag::before { content: "PRIORIDAD"; color: #a0aec0; font-size: 10px; }
+.fecha-tarea::before { content: "LÍMITE"; color: #a0aec0; font-size: 10px; }
+
+.titulo-tarea::before, .prioridad-tag::before, .fecha-tarea::before {
+    font-weight: 800;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.titulo-tarea {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin: 0;
+    min-width: 200px;
+}
+
+.prioridad-tag {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.fecha-tarea {
+    font-size: 0.95rem;
+    color: #718096;
+    font-weight: 600;
+}
+
+/* Colores de prioridad */
+.urgente { color: #ef4444; }
+.con-tiempo { color: #22c55e; }
+
+/* --- BOTONES DE ACCIÓN (EL FIX DE CENTRADO) --- */
+.task-accions {
+    display: flex !important;
+    flex-direction: row !important; /* Asegura que estén uno al lado del otro */
+    gap: 12px;
     flex-shrink: 0;
 }
 
-/* Contenedor de información de la tarea */
-.item-task .info-tarea {
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr; /* Título grande, prioridad y fecha pequeñas */
-    align-items: center;
-    gap: 10px;
+.task-accions .button-container {
+    /* Forzamos círculo perfecto y anulamos el width:100% del nav */
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    
+    /* Centrado absoluto del contenido */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    /* Limpieza de estilos heredados */
+    padding: 0 !important; 
+    margin: 0 !important;
+    background-color: #f8fafc !important;
+    border: 1px solid #f1f5f9 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.item-task .titulo-tarea {
-    font-weight: 600;
-    color: #1f2937;
-    font-size: 15px;
+/* Reset del icono dentro del botón */
+.task-accions .button-image {
+    width: 22px !important;
+    height: 22px !important;
+    margin: 0 !important; /* Quitamos el margin-right del nav */
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    opacity: 1 !important;
 }
 
-.item-task .prioridad-tarea {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #ef4444; /* Color rojo por defecto para llamar la atención */
-    background: #fee2e2;
-    padding: 4px 8px;
-    border-radius: 6px;
-    text-align: center;
-    width: fit-content;
+.task-accions .button-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
 }
 
-.item-task .fecha-tarea {
-    color: #6b7280;
-    font-size: 13px;
-    font-family: 'JetBrains Mono', monospace;
-    text-align: right;
+/* Escondemos el botón de texto que crea tu componente Button */
+.task-accions .button-text {
+    display: none !important;
+}
+
+/* Hovers */
+.task-accions .button-container:hover {
+    background-color: #2D97ED !important;
+    transform: scale(1.1);
+}
+
+.task-accions .btn-delete:hover {
+    background-color: #ef4444 !important;
+}
+
+/* Icono blanco en hover */
+.task-accions .button-container:hover img {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 850px) {
+    .info-tarea {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin: 15px 0;
+    }
+    .item-task {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .task-accions {
+        align-self: flex-end;
+    }
 }

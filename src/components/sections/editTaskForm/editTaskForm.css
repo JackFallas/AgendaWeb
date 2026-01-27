@@ -12,7 +12,7 @@
     max-width: 500px;
     padding: 40px;
     border-radius: 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Sombra suave como en contactos */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .form-card h2 {
@@ -52,7 +52,6 @@
     outline: none;
 }
 
-/* Botones circulares idénticos a los de la imagen de contactos */
 .form-botones-centrados {
     display: flex;
     justify-content: center;
@@ -74,6 +73,8 @@
 .form-botones-centrados .button-image {
     width: 24px !important;
     margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
 }
 
 #submit:hover { background: #e0f2fe !important; border-color: #2D97ED !important; }

@@ -1,28 +1,54 @@
-section.toDoList {
+.toDoList {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+    padding: 20px;
     box-sizing: border-box;
 }
 
-/* Contenedor del Título + Botón Agregar */
 .toDoList-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #ffffff;
+    margin-bottom: 50px;
 }
 
 .toDoList-header h2 {
+    color: #2D97ED;
+    font-size: 2rem;
+    font-weight: 800;
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    color: #111827;
 }
 
-/* Ajuste para que el botón de agregar no se vea gigante */
+/* Botón flotante de agregar */
 .toDoList-header .button-container {
-    width: auto;
-    padding: 0;
+    width: 60px !important;
+    height: 60px !important;
+    background: #2D97ED !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center !important; /* Centrado horizontal */
+    align-items: center !important;     /* Centrado vertical */
+    box-shadow: 0 10px 15px rgba(45, 151, 237, 0.3);
+    padding: 0 !important;              /* Quitamos padding del nav */
+    margin: 0 !important;
+    border: none !important;
+}
+
+.toDoList-header .button-container:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* Forzamos el centrado del icono "+" */
+.toDoList-header .button-image {
+    margin: 0 !important; /* Quitamos el margin-right: 12px del nav */
+    width: 30px !important;
+    height: 30px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    opacity: 1 !important;
+    filter: brightness(0) invert(1);
+}
+
+.toDoList-header .button-text {
+    display: none !important; /* Escondemos el botón de texto vacío */
 }

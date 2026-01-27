@@ -30,15 +30,20 @@ let ToDoList = () => {
 
     const tareasActuales = getTasksFromStorage();
 
-    tareasActuales.forEach((task) => {
+    let tasksGrid = document.createElement("div");
+    tasksGrid.className = "tasks-grid";
+
+    tareasActuales.forEach((task, index) => {
         sectionToDoList.appendChild(ItemTask(
             "check_box",
             task.titulo,
             task.prioridad,
-            task.fecha));
+            task.fecha,
+            index   
+        ));
     });
     
-    sectionToDoList.appendChild(ItemTask("check_box", "Y yo le pregunte", "urgente","20/01/2026"))
+    sectionToDoList.appendChild(tasksGrid);
 
     return sectionToDoList;
 }
